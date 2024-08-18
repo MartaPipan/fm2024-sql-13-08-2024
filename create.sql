@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS "users"(
     "email" varchar(256) NOT NULL CHECK ("email"!='') UNIQUE,
     "height" smallint NOT NULL CHECK ("height">=100 AND "height"<=250),
     "weight" numeric(5,2) NOT NULL CHECK("weight">=20 AND "weight"<=250),   --123.45
-    "birthday" date NOT NULL CHECK("birthday"<current_date),
+    "birthday" DATE NOT NULL CHECK("birthday"<CURRENT_DATE),
     "isMale" boolean NOT NULL DEFAULT true
 );
 
