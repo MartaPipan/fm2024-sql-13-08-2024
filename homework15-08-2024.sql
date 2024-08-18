@@ -19,3 +19,7 @@ INSERT INTO "products" VALUES
 
 INSERT INTO "products"("price", "currency", "name", "quantity","is sale","manufacture date") VALUES
 (1299.00, 'USD', 'Apple iPhone 15 Pro Max', 5, false, '2023-12-31'); 
+
+
+INSERT INTO "products"("price", "currency", "name", "quantity") VALUES
+(1400.00, 'USD', 'Apple iPhone 16', 3); 
