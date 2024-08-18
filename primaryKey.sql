@@ -1,11 +1,8 @@
 
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-
-
 DROP TABLE IF EXISTS "messages";
 
 CREATE TABLE IF NOT EXISTS "messages"(
-    "id" uuid PRIMARY KEY DEFAULT uuid_generate_v1(),
+    "id" bigserial PRIMARY KEY,
     "body" varchar(2048) NOT NULL CHECK("body"!=''),
     "author" varchar(32) NOT NULL CHECK("author"!=''),
     "created_at" timestamp NOT NULL DEFAULT current_timestamp,
