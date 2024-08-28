@@ -1,25 +1,66 @@
 DROP TABLE IF EXISTS "products";
 
 CREATE TABLE IF NOT EXISTS "products"(
-  "name" varchar(64) NOT NULL UNIQUE CHECK("name"!=''),
-  "price" numeric(6,2) NOT NULL CHECK ("price">0 AND "price"<=10000),
-  "manufacture date" DATE CHECK("manufacture date"<=CURRENT_DATE),
-  "quantity" SMALLINT CHECK("quantity">=0 AND "quantity"<=1000) DEFAULT 0,
-  "currency" CHAR(3) DEFAULT 'UAH',
-  "is sale" BOOLEAN DEFAULT false
+  "id" serial PRIMARY KEY,
+  "name" varchar(256) NOT NULL CHECK("name"!=''),
+  "category" varchar(256) NOT NULL CHECK("category"!=''),
+  "price" decimal(16,2) NOT NULL CHECK("price">0),
+  "quantity" smallint NOT NULL CHECK("quantity">=0 AND "quantity"<=1000),
+  CONSTRAINT "unique_pair_name_category" UNIQUE ("name", "category")
+);
+INSERT INTO products ("name", "category", "price", "quantity")
+VALUES 
+('egg','eggs', 3.4, 500), 
+('milk','milk_products', 35.12, 150),
+('cheese','milk_products', 289.79, 325),
+('beef','meat', 356.70, 80),
+('pork','meat', 168.20, 135);
+
+DROP TABLE IF EXISTS "orders";
+
+CREATE TABLE IF NOT EXISTS "orders"(
+  "id" bigserial PRIMARY KEY,
+  "userId" int REFERENCES "users" ("id"),
+  "createdAt" timestamp NOT NULL DEFAULT current_timestamp
+);
+INSERT INTO "orders"("userId") VALUES (1), (2), (1);
+
+
+
+DROP TABLE IF EXISTS "products_to_orders";
+
+CREATE TABLE IF NOT EXISTS "products_to_orders"(
+  "productId" int REFERENCES "products" ("id"),
+  "orderId" bigint REFERENCES "orders" ("id"),
+  "quantity" smallint NOT NULL CHECK("quantity">0) DEFAULT 1,
+  PRIMARY KEY ("productId", "orderId")
 );
 
-INSERT INTO "products" VALUES
-('iPhone 13', 490.99, '2023-12-30', 58, 'EUR', false),
-('Samsung Galaxy S22', 350.50, '2023-03-20', 83, 'EUR', true),
-('Xiaomi Redmi Note 11', 7499.99, '2022-11-11', 100, 'UAH', false),
-('Samsung Galaxy A52', 7000.00, '2023-01-10', 45, 'UAH', false),
-('Samsung Galaxy Z Fold 3', 640.99, '2022-08-25', 20, 'USD', true),
-('Samsung Galaxy S21 FE', 8500.00, '2023-02-14', 25, 'UAH', false);
-
-INSERT INTO "products"("price", "currency", "name", "quantity","is sale","manufacture date") VALUES
-(1299.00, 'USD', 'Apple iPhone 15 Pro Max', 5, false, '2023-12-31'); 
-
-
-INSERT INTO "products"("price", "currency", "name", "quantity") VALUES
-(1400.00, 'USD', 'Apple iPhone 16', 3); 
+INSERT INTO "products_to_orders" ("productId", "orderId", "quantity") VALUES(1,1,20), (2,1,1), (1,2,10), (5,2,1), (3,3,1), (4,3,1);INSERT INTO products_to_orders (productId, productId, orderId, orderId, quantity)
+VALUES (
+    productId:integerINSERT INTO products_to_orders (productId, productId, orderId, orderId, quantity)
+    VALUES (
+        productId:integerINSERT INTO products (id, name, category, price, quantity)
+        VALUES (
+            id:integerINSERT INTO messages (body, author_id, created_at, is_read)
+            VALUES (
+                'body:character varying',
+                'author_id:character varying',
+                'created_at:timestamp without time zone',
+                is_read:boolean
+              );,
+            'name:character varying',
+            'category:character varying',
+            price:numeric,
+            'quantity:smallint'
+          );,
+        productId:integer,
+        'orderId:bigint',
+        'orderId:bigint',
+        'quantity:smallint'
+      );,
+    productId:integer,
+    'orderId:bigint',
+    'orderId:bigint',
+    'quantity:smallint'
+  );
