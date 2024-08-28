@@ -1,3 +1,29 @@
+DROP TABLE IF EXISTS "messages";
+
+CREATE TABLE IF NOT EXISTS "messages"(
+    "id" bigserial PRIMARY KEY,
+    "body" varchar(2048) NOT NULL CHECK("body" !=''),
+    "author_id" varchar(32) NOT NULL CHECK('author'!=''),
+    "created_at" timestamp NOT NULL DEFAULT current_timestamp,
+    "is_read" boolean DEFAULT false
+);
+
+INSERT INTO "messages"("body", "author_id")
+VALUES 
+('hi','Tom'),
+('hello','Sam'),
+('hi','Tom'),
+(')))','Alex');
+
+INSERT INTO "messages" (id, body, author_id, created_at, is_read)
+VALUES (
+    'id:bigint',
+    'body:character varying',
+    author_id:integer,
+    'created_at:timestamp without time zone',
+    is_read:boolean
+  );
+  
 DROP TABLE IF EXISTS "users";
 
 CREATE TABLE IF NOT EXISTS "users"(
