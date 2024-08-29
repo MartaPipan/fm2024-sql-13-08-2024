@@ -36,31 +36,5 @@ CREATE TABLE IF NOT EXISTS "products_to_orders"(
   PRIMARY KEY ("productId", "orderId")
 );
 
-INSERT INTO "products_to_orders" ("productId", "orderId", "quantity") VALUES(1,1,20), (2,1,1), (1,2,10), (5,2,1), (3,3,1), (4,3,1);INSERT INTO products_to_orders (productId, productId, orderId, orderId, quantity)
-VALUES (
-    productId:integerINSERT INTO products_to_orders (productId, productId, orderId, orderId, quantity)
-    VALUES (
-        productId:integerINSERT INTO products (id, name, category, price, quantity)
-        VALUES (
-            id:integerINSERT INTO messages (body, author_id, created_at, is_read)
-            VALUES (
-                'body:character varying',
-                'author_id:character varying',
-                'created_at:timestamp without time zone',
-                is_read:boolean
-              );,
-            'name:character varying',
-            'category:character varying',
-            price:numeric,
-            'quantity:smallint'
-          );,
-        productId:integer,
-        'orderId:bigint',
-        'orderId:bigint',
-        'quantity:smallint'
-      );,
-    productId:integer,
-    'orderId:bigint',
-    'orderId:bigint',
-    'quantity:smallint'
-  );
+INSERT INTO "products_to_orders" ("productId", "orderId", "quantity") VALUES(1,1,20), (2,1,1), (1,2,10), (5,2,1), (3,3,1), (4,3,1);
+
